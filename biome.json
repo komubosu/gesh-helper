@@ -1,0 +1,96 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+
+  "organizeImports": { "enabled": true },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "arrowParentheses": "asNeeded"
+    }
+  },
+
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "formatWithErrors": true,
+    "lineWidth": 120,
+    "attributePosition": "auto",
+    "lineEnding": "lf"
+  },
+
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noConsoleLog": "warn",
+        "noEmptyBlockStatements": "warn",
+        "useAwait": "warn",
+        "noArrayIndexKey": "off",
+        "noThenProperty": "off"
+      },
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noConstantMathMinMaxClamp": "error",
+        "noUnusedVariables": "warn",
+        "useArrayLiterals": "error",
+        "useHookAtTopLevel": "error"
+      },
+      "nursery": {
+        "noImgElement": "error",
+        "noHeadElement": "error",
+        "noDocumentCookie": "error",
+        "noOctalEscape": "info",
+        "noTemplateCurlyInString": "info",
+        "noNestedTernary": "warn",
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "tw", "tv"]
+          }
+        }
+      },
+      "style": {
+        "useCollapsedElseIf": "error",
+        "useFragmentSyntax": "warn",
+        "useShorthandAssign": "info",
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "requireAscii": true,
+            "strictCase": false,
+            "conventions": [
+              {
+                "selector": { "kind": "objectLiteralMember" },
+                "formats": ["CONSTANT_CASE", "camelCase", "snake_case", "PascalCase"]
+              },
+              {
+                "selector": { "kind": "typeProperty" },
+                "formats": ["camelCase", "snake_case"]
+              }
+            ]
+          }
+        },
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "requireAscii": true,
+            "strictCase": true,
+            "filenameCases": ["kebab-case"]
+          }
+        }
+      }
+    }
+  },
+
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  }
+}
