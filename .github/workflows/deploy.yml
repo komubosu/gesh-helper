@@ -3,33 +3,34 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # Укажите ветку, которая запускает деплой
+      - master
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # Шаг 1: Проверяем код из репозитория
-    - name: Checkout code
+    # Проверка репозитория
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Шаг 2: Устанавливаем Node.js
+    # Установка Node.js
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 20 # Укажите вашу версию Node.js
 
-    # Шаг 3: Устанавливаем зависимости и билдим проект
-    - name: Install dependencies and build
-      run: |
-        npm install
-        npm run build
-        npm run export
+    # Установка зависимостей
+    - name: Install dependencies
+      run: npm ci
 
-    # Шаг 4: Публикуем проект на GitHub Pages
+    # Сборка и экспорт Next.js приложения
+    - name: Build and export the app
+      run: npm run deploy
+
+    # Деплой на GitHub Pages
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./out
