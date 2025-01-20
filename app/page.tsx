@@ -6,7 +6,6 @@ export default async function Home() {
   let sectors = SECTORS_DATA.sector;
 
   try {
-    if (!baseApiURL) return;
     const response = await fetch(baseApiURL);
 
     if (!response.ok) {
@@ -15,7 +14,7 @@ export default async function Home() {
 
     const data = await response.json();
 
-    sectors = data?.sector ?? SECTORS_DATA.sector;
+    sectors = data?.sector || SECTORS_DATA.sector;
   } catch (error) {
     console.error(error);
   }
