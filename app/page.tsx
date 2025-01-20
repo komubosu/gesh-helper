@@ -15,7 +15,7 @@ export default async function Home() {
 
     const data = await response.json();
 
-    sectors = data?.sectors ?? SECTORS_DATA.sector;
+    sectors = data?.sector ?? SECTORS_DATA.sector;
   } catch (error) {
     console.error(error);
   }

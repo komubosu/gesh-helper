@@ -4,10 +4,7 @@ export const SECTORS_DATA = {
       type: 'sector',
       value: {
         name_sector: 'Сектор А',
-        lifts: [
-          { name: 'Кресельная КД «Фристайл»', is_work: true },
-          { name: 'Кресельная КД «Фристайл2»', is_work: false },
-        ],
+        lifts: [{ name: 'Кресельная КД «Фристайл»', is_work: true }],
       },
       id: '37bdc96c-032b-413e-adb1-f04a78fe13d1',
     },
