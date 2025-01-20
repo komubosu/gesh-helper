@@ -1,53 +1,29 @@
 import { cn } from '@/shared/lib/cn';
+import { SECTORS_DATA } from '@/shared/model/constants';
+import { baseApiURL } from '@/shared/model/env';
 
-const data = {
-  sector: [
-    {
-      type: 'sector',
-      value: {
-        name_sector: 'Сектор А',
-        lifts: [
-          {
-            name: 'Кресельная КД «Фристайл»',
-            is_work: true,
-          },
-          {
-            name: 'Кресельная КД «Фристайл2»',
-            is_work: false,
-          },
-        ],
-      },
-      id: '37bdc96c-032b-413e-adb1-f04a78fe13d1',
-    },
-    {
-      type: 'sector',
-      value: {
-        name_sector: 'Сектор В',
-        lifts: [
-          {
-            name: 'Кресельная КД «Булочка»',
-            is_work: false,
-          },
-        ],
-      },
-      id: 'be51d88b-fa87-4db5-8fa7-b2176d9dbfb1',
-    },
-  ],
-};
+export default async function Home() {
+  let sectors = SECTORS_DATA.sector;
 
-export default function Home() {
+  try {
+    if (!baseApiURL) return;
+    const response = await fetch(baseApiURL);
+
+    if (!response.ok) {
+      throw new Error('Запрос на сектора с ошибкой');
+    }
+
+    const data = await response.json();
+
+    sectors = data?.sectors ?? SECTORS_DATA.sector;
+  } catch (error) {
+    console.error(error);
+  }
+
   return (
     <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
-      {/* <div className='inline-block max-w-xl justify-center text-center'>
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: 'violet' })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>websites regardless of your design experience.</span>
-        <div className={subtitle({ class: 'mt-4' })}>Beautiful, fast and modern React UI library.</div>
-      </div> */}
-
       <div>
-        {data.sector.map(sector => (
+        {sectors.map(sector => (
           <div key={sector.id}>
             <h2 className='font-bold text-lg'>{sector.value.name_sector}</h2>
             <ul className='pl-4'>
