@@ -5,7 +5,8 @@ import NextLink from 'next/link';
 
 import { ThemeSwitch } from '@/features/switch-theme';
 import { siteConfig } from '@/shared/config/site';
-import { HeartFilledIcon, Logo } from '@/shared/ui/icons';
+import { HeartFilledIcon } from '@/shared/ui/icons';
+import { title } from '@/shared/ui/primitives';
 
 export const Navbar = () => {
   return (
@@ -13,8 +14,7 @@ export const Navbar = () => {
       <NavbarContent className='basis-1/5' justify='start'>
         <NavbarBrand as='li' className='max-w-fit gap-3'>
           <NextLink className='flex items-center justify-start gap-1' href='/'>
-            <Logo />
-            <p className='font-bold text-inherit'>ACME</p>
+            <p className={title({ color: 'violet' })}>Gesh Helper</p>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
