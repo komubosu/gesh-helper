@@ -1,24 +1,17 @@
-import '@/styles/globals.css';
-import { Link } from '@nextui-org/link';
-import clsx from 'clsx';
-import type { Metadata, Viewport } from 'next';
+import { Link } from '@heroui/link';
+import type { Viewport } from 'next';
+import { Balsamiq_Sans } from 'next/font/google';
 
-import { Providers } from './providers';
+import '@/fsd-app/styles/globals.css';
+import { Providers } from '@/fsd-app/providers';
+import { cn } from '@/shared/lib/cn';
+import { Navbar } from '@/widget/navbar';
 
-import { Navbar } from '@/components/navbar';
-import { fontSans } from '@/config/fonts';
-import { siteConfig } from '@/config/site';
-
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
+export const balsamiqSans = Balsamiq_Sans({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-balsamiq-sans',
+  weight: ['400', '700'],
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -33,10 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang='en'>
-      <head />
-      <body className={clsx('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-        <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+    <html suppressHydrationWarning lang='ru'>
+      <body className={cn('min-h-screen bg-background font-balsamiq-sans antialiased', balsamiqSans.variable)}>
+        <Providers>
           <div className='relative flex h-screen flex-col'>
             <Navbar />
             <main className='container mx-auto max-w-7xl flex-grow px-6 pt-16'>{children}</main>

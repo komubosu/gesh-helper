@@ -1,4 +1,4 @@
-import { title } from '@/components/primitives';
+import { title } from '@/shared/ui/primitives';
 
 export default function BlogPage() {
   return (
