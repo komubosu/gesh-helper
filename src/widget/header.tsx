@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@heroui/button';
 import { Link } from '@heroui/link';
 import { NavbarBrand, NavbarContent, Navbar as NextUINavbar } from '@heroui/navbar';
