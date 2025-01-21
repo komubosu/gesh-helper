@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@heroui/button';
 import { Link } from '@heroui/link';
 import { NavbarBrand, NavbarContent, Navbar as NextUINavbar } from '@heroui/navbar';
@@ -8,7 +10,7 @@ import { siteConfig } from '@/shared/config/site';
 import { HeartFilledIcon } from '@/shared/ui/icons';
 import { title } from '@/shared/ui/primitives';
 
-export const Navbar = () => {
+export const Header = () => {
   return (
     <NextUINavbar maxWidth='xl' position='sticky'>
       <NavbarContent className='basis-1/5' justify='start'>

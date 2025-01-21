@@ -1,6 +1,7 @@
-import { cn } from '@/shared/lib/cn';
 import { SECTORS_DATA } from '@/shared/model/constants';
 import { baseApiURL } from '@/shared/model/env';
+import { Card, CardBody, CardHeader } from '@heroui/card';
+import { CheckCircle, XCircle } from 'lucide-react';
 
 export default async function Home() {
   let sectors = SECTORS_DATA.sector;
@@ -20,24 +21,24 @@ export default async function Home() {
   }
 
   return (
-    <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
-      <div>
-        {sectors.map(sector => (
-          <div key={sector.id}>
-            <h2 className='font-bold text-lg'>{sector.value.name_sector}</h2>
-            <ul className='pl-4'>
+    <section className='flex flex-col gap-4'>
+      {sectors.map(sector => (
+        <Card key={sector.id}>
+          <CardHeader>
+            <h2 className='font-bold text-2xl'>{sector.value.name_sector}</h2>
+          </CardHeader>
+          <CardBody>
+            <ul className='space-y-2'>
               {sector.value.lifts.map((lift, index) => (
-                <li key={index} className='flex gap-2'>
+                <li className='flex items-center justify-between' key={index}>
                   <span>{lift.name}</span>
-                  <span className={cn(lift.is_work ? 'text-green-500' : 'text-red-500')}>
-                    {lift.is_work ? 'Работает' : 'Не работает'}
-                  </span>
+                  {lift.is_work ? <CheckCircle className='text-green-500' /> : <XCircle className='text-red-500' />}
                 </li>
               ))}
             </ul>
-          </div>
-        ))}
-      </div>
+          </CardBody>
+        </Card>
+      ))}
     </section>
   );
 }

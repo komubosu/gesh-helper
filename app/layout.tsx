@@ -4,7 +4,8 @@ import { Balsamiq_Sans } from 'next/font/google';
 import '@/fsd-app/styles/globals.css';
 import { Providers } from '@/fsd-app/providers';
 import { cn } from '@/shared/lib/cn';
-import { Navbar } from '@/widget/navbar';
+import { BottomNavbar } from '@/widget/bottom-navbar';
+import { Header } from '@/widget/header';
 
 export const balsamiqSans = Balsamiq_Sans({
   subsets: ['latin', 'cyrillic'],
@@ -29,8 +30,9 @@ export default function RootLayout({
       <body className={cn('min-h-screen bg-background font-balsamiq-sans antialiased', balsamiqSans.variable)}>
         <Providers>
           <div className='relative flex h-screen flex-col'>
-            <Navbar />
-            <main className='container mx-auto max-w-7xl flex-grow px-6 pt-16'>{children}</main>
+            <Header />
+            <main className='flex-grow px-4'>{children}</main>
+            <BottomNavbar />
           </div>
         </Providers>
       </body>
