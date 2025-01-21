@@ -9,7 +9,7 @@ export const BottomNavbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className='flex items-center gap-4 p-4'>
+    <nav className='flex items-center gap-4 p-4 mobile:pb-8'>
       <Button
         className='h-16 flex-col gap-0 p-2'
         as={Link}

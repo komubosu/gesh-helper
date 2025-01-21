@@ -11,7 +11,9 @@ module.exports = {
     extend: {
       fontFamily: { 'balsamiq-sans': ['var(--font-balsamiq-sans)'] },
     },
+    screens: { mobile: { raw: '(pointer:coarse)' } },
   },
+
   darkMode: 'class',
   plugins: [heroui({ addCommonColors: true })],
 };
