@@ -27,9 +27,14 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang='ru'>
-      <body className={cn('min-h-screen bg-background font-balsamiq-sans antialiased', balsamiqSans.variable)}>
+      <body
+        className={cn(
+          'min-h-screen overflow-hidden bg-background font-balsamiq-sans antialiased',
+          balsamiqSans.variable,
+        )}
+      >
         <Providers>
-          <div className='relative flex h-screen flex-col'>
+          <div className='relative flex h-screen flex-col overflow-hidden'>
             <Header />
             <main className='flex-grow px-4'>{children}</main>
             <BottomNavbar />
