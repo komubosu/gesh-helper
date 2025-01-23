@@ -1,11 +1,13 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: 'Next.js + NextUI',
-  description: 'Make beautiful websites regardless of your design experience.',
-  navItems: [],
-  navMenuItems: [],
+  name: 'Gesh Helper',
+  description: 'Gesh Helper',
+  navItems: [
+    { label: 'Подъемники', href: '/' },
+    { label: 'Бары', href: '/pubs' },
+  ],
   links: {
-    sponsor: 'https://patreon.com/jrgarciadev',
+    sponsor: 'а тут потом будет спонсор',
   },
 };

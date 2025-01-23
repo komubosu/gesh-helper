@@ -3,6 +3,7 @@ import { Balsamiq_Sans } from 'next/font/google';
 
 import '@/fsd-app/styles/globals.css';
 import { Providers } from '@/fsd-app/providers';
+import { siteConfig } from '@/shared/config/site';
 import { cn } from '@/shared/lib/cn';
 import { BottomNavbar } from '@/widget/bottom-navbar';
 import { Header } from '@/widget/header';
@@ -15,7 +16,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Gesh Helper',
+  title: siteConfig.name,
+  description: siteConfig.description,
 };
 
 const balsamiqSans = Balsamiq_Sans({
