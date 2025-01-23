@@ -2,42 +2,50 @@
 
 import { Card, CardBody, CardHeader } from '@heroui/card';
 import { CheckCircle, XCircle } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
-import type { SECTORS_DATA } from '@/shared/model/constants';
+import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
+import { title } from '@/shared/ui/primitives';
 
 export default function Sectors() {
-  const [sectors, setSectors] = useState<typeof SECTORS_DATA.sector>([]);
+  const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
 
-  useEffect(() => {
-    fetch(baseApiURL)
-      .then(res => res.json())
-      .then(data => setSectors(data.sector))
-      .catch(err => console.error(err));
-  }, []);
+  if (isLoading)
+    return (
+      <div className='flex h-full items-center justify-center'>
+        <p className={title({ color: 'blue' })}>Загружаем...</p>
+      </div>
+    );
 
-  console.log(baseApiURL);
+  if (error || !data)
+    return (
+      <div className='flex h-full items-center justify-center'>
+        <p className={title({ color: 'pink' })}>Ошибочка :(</p>
+      </div>
+    );
 
   return (
-    <section className='flex flex-col gap-4'>
-      {sectors.map(sector => (
-        <Card key={sector.id}>
-          <CardHeader>
-            <h2 className='font-bold text-2xl'>{sector.value.name_sector}</h2>
-          </CardHeader>
-          <CardBody>
-            <ul className='space-y-2'>
-              {sector.value.lifts.map((lift, index) => (
-                <li className='flex items-center justify-between' key={index}>
-                  <span>{lift.name}</span>
-                  {lift.is_work ? <CheckCircle className='text-green-500' /> : <XCircle className='text-red-500' />}
-                </li>
-              ))}
-            </ul>
-          </CardBody>
-        </Card>
+    <ul className='space-y-4'>
+      {data.sector.map(sector => (
+        <li key={sector.id}>
+          <Card>
+            <CardHeader>
+              <h2 className='font-bold text-2xl'>{sector.value.name_sector}</h2>
+            </CardHeader>
+            <CardBody>
+              <ul className='space-y-2'>
+                {sector.value.lifts.map((lift, index) => (
+                  <li className='flex items-center justify-between' key={index}>
+                    <span>{lift.name}</span>
+                    {lift.is_work ? <CheckCircle className='text-green-500' /> : <XCircle className='text-red-500' />}
+                  </li>
+                ))}
+              </ul>
+            </CardBody>
+          </Card>
+        </li>
       ))}
-    </section>
+    </ul>
   );
 }

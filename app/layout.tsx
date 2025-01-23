@@ -29,13 +29,10 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
     <html suppressHydrationWarning lang='ru'>
       <head />
       <body
-        className={cn(
-          'min-h-screen overflow-hidden bg-background font-balsamiq-sans antialiased',
-          balsamiqSans.variable,
-        )}
+        className={cn('min-h-dvh overflow-hidden bg-background font-balsamiq-sans antialiased', balsamiqSans.variable)}
       >
         <Providers>
-          <div className='relative flex h-screen flex-col overflow-hidden'>
+          <div className='relative flex h-dvh flex-col overflow-hidden'>
             <Header />
             <main className='flex-grow overflow-auto px-4'>{children}</main>
             <BottomNavbar />
