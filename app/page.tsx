@@ -3,22 +3,14 @@ import { baseApiURL } from '@/shared/model/env';
 import { Card, CardBody, CardHeader } from '@heroui/card';
 import { CheckCircle, XCircle } from 'lucide-react';
 
-export default async function Home() {
-  let sectors = SECTORS_DATA.sector;
+export const revalidate = 60;
+export const dynamicParams = true;
 
-  try {
-    const response = await fetch(baseApiURL);
+export default async function Sectors() {
+  const response = await fetch(baseApiURL);
+  const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error('Запрос на сектора с ошибкой');
-    }
-
-    const data = await response.json();
-
-    sectors = data?.sector || SECTORS_DATA.sector;
-  } catch (error) {
-    console.error(error);
-  }
+  const sectors = (data?.sector as typeof SECTORS_DATA.sector) || SECTORS_DATA.sector;
 
   return (
     <section className='flex flex-col gap-4'>

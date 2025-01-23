@@ -10,11 +10,11 @@ import { title } from '@/shared/ui/primitives';
 
 export const Header = () => {
   return (
-    <NextUINavbar maxWidth='xl' position='sticky'>
-      <NavbarContent className='basis-1/5' justify='start'>
+    <NextUINavbar maxWidth='full' position='static'>
+      <NavbarContent>
         <NavbarBrand as='li' className='max-w-fit gap-3'>
-          <NextLink className='flex items-center justify-start gap-1' href='/'>
-            <p className={title({ color: 'violet' })}>Gesh Helper</p>
+          <NextLink className={title({ color: 'violet' })} href='/'>
+            Gesh Helper
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
