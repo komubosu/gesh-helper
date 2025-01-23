@@ -8,7 +8,7 @@ import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
 import { title } from '@/shared/ui/primitives';
 
-export default function Sectors() {
+export default function SectorsPages() {
   const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
 
   if (isLoading)

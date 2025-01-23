@@ -23,8 +23,8 @@ export const BottomNavbar = () => {
       <Button
         className='h-16 flex-col gap-0 p-2'
         as={Link}
-        href='/bars'
-        variant={pathname === '/bars' ? 'solid' : 'light'}
+        href='/pubs'
+        variant={pathname === '/pubs' ? 'solid' : 'light'}
         fullWidth
       >
         <BeerIcon size={24} />
