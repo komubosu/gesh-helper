@@ -7,12 +7,6 @@ import { cn } from '@/shared/lib/cn';
 import { BottomNavbar } from '@/widget/bottom-navbar';
 import { Header } from '@/widget/header';
 
-export const balsamiqSans = Balsamiq_Sans({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-balsamiq-sans',
-  weight: ['400', '700'],
-});
-
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -23,6 +17,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Gesh Helper',
 };
+
+export const balsamiqSans = Balsamiq_Sans({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-balsamiq-sans',
+  weight: ['400', '700'],
+});
 
 export default function RootLayout({
   children,
