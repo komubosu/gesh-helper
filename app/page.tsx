@@ -1,3 +1,5 @@
+'use client';
+
 import { SECTORS_DATA } from '@/shared/model/constants';
 import { baseApiURL } from '@/shared/model/env';
 import { Card, CardBody, CardHeader } from '@heroui/card';
