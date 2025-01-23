@@ -36,7 +36,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         <Providers>
           <div className='relative flex h-dvh flex-col overflow-hidden'>
             <Header />
-            <main className='flex-grow overflow-auto px-4'>{children}</main>
+            <main className='flex-grow overflow-auto'>{children}</main>
             <BottomNavbar />
           </div>
         </Providers>

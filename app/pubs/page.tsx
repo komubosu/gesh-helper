@@ -7,6 +7,7 @@ import useSWR from 'swr';
 import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
 import { title } from '@/shared/ui/primitives';
+import { ScrollShadow } from '@heroui/scroll-shadow';
 
 export default function PubsPage() {
   const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
@@ -26,26 +27,28 @@ export default function PubsPage() {
     );
 
   return (
-    <ul className='space-y-4'>
-      {data.pubs.map(pub => (
-        <li key={pub.id}>
-          <Card>
-            <CardBody className='space-y-2'>
-              <div className='flex items-center justify-between'>
-                <h2 className='font-bold text-2xl'>{pub.value.name}</h2>
-                <div className='flex h-full items-center gap-1'>
-                  <span className='font-medium text-sm'>{pub.value.rage_receipt}</span>
-                  <Star size={20} className='fill-current text-yellow-400' />
+    <ScrollShadow className='h-full px-4'>
+      <ul className='space-y-4'>
+        {data.pubs.map(pub => (
+          <li key={pub.id}>
+            <Card radius='lg'>
+              <CardBody className='space-y-2'>
+                <div className='flex items-center justify-between'>
+                  <h2 className='font-bold text-2xl'>{pub.value.name}</h2>
+                  <div className='flex h-full items-center gap-1'>
+                    <span className='font-medium text-sm'>{pub.value.rage_receipt}</span>
+                    <Star size={20} className='fill-current text-yellow-400' />
+                  </div>
                 </div>
-              </div>
-              <div className='flex items-center justify-between'>
-                <span className='text-gray-600 text-sm'>{pub.value.work_schedule}</span>
-                <span className='font-medium text-sm'>Средний чек: {pub.value.rage_receipt} ₽</span>
-              </div>
-            </CardBody>
-          </Card>
-        </li>
-      ))}
-    </ul>
+                <div className='flex items-center justify-between'>
+                  <span className='text-gray-600 text-sm'>{pub.value.work_schedule}</span>
+                  <span className='font-medium text-sm'>Средний чек: {pub.value.rage_receipt} ₽</span>
+                </div>
+              </CardBody>
+            </Card>
+          </li>
+        ))}
+      </ul>
+    </ScrollShadow>
   );
 }
