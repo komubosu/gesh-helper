@@ -2,13 +2,13 @@
 
 import { Card, CardBody, CardHeader } from '@heroui/card';
 import { ScrollShadow } from '@heroui/scroll-shadow';
+import { Skeleton } from '@heroui/skeleton';
 import { CheckCircle, XCircle } from 'lucide-react';
 import useSWR from 'swr';
 
 import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
 import { title } from '@/shared/ui/primitives';
-import { Skeleton } from '@heroui/skeleton';
 
 export default function SectorsPages() {
   const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
