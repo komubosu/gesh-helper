@@ -1,11 +1,11 @@
-import { Button } from '@heroui/button';
-import { Link } from '@heroui/link';
+// import { Button } from '@heroui/button';
+// import { Link } from '@heroui/link';
 import { NavbarBrand, NavbarContent, Navbar as NextUINavbar } from '@heroui/navbar';
 import NextLink from 'next/link';
 
-import { ThemeSwitch } from '@/features/switch-theme';
-import { siteConfig } from '@/shared/config/site';
-import { HeartFilledIcon } from '@/shared/ui/icons';
+// import { ThemeSwitch } from '@/features/switch-theme';
+// import { siteConfig } from '@/shared/config/site';
+// import { HeartFilledIcon } from '@/shared/ui/icons';
 import { title } from '@/shared/ui/primitives';
 
 export const Header = () => {
@@ -19,7 +19,7 @@ export const Header = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className='basis-1 pl-4' justify='end'>
+      {/* <NavbarContent className='basis-1 pl-4' justify='end'>
         <ThemeSwitch />
         <Button
           isExternal
@@ -30,7 +30,7 @@ export const Header = () => {
           variant='flat'
           isIconOnly
         />
-      </NavbarContent>
+      </NavbarContent> */}
     </NextUINavbar>
   );
 };

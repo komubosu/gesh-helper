@@ -1,4 +1,4 @@
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Balsamiq_Sans } from 'next/font/google';
 
 import '@/fsd-app/styles/globals.css';
@@ -20,6 +20,10 @@ export const viewport: Viewport = {
   ],
 };
 
+export const metadata: Metadata = {
+  title: 'Gesh Helper',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -36,7 +40,7 @@ export default function RootLayout({
         <Providers>
           <div className='relative flex h-screen flex-col overflow-hidden'>
             <Header />
-            <main className='flex-grow px-4'>{children}</main>
+            <main className='flex-grow overflow-auto px-4'>{children}</main>
             <BottomNavbar />
           </div>
         </Providers>
