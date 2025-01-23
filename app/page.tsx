@@ -17,6 +17,8 @@ export default function Sectors() {
       .catch(err => console.error(err));
   }, []);
 
+  console.log(baseApiURL);
+
   return (
     <section className='flex flex-col gap-4'>
       {sectors.map(sector => (
