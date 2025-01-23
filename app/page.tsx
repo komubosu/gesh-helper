@@ -15,7 +15,7 @@ export default function Sectors() {
       .then(res => res.json())
       .then(data => setSectors(data.sector))
       .catch(err => console.error(err));
-  });
+  }, []);
 
   return (
     <section className='flex flex-col gap-4'>
