@@ -18,19 +18,16 @@ export const metadata: Metadata = {
   title: 'Gesh Helper',
 };
 
-export const balsamiqSans = Balsamiq_Sans({
+const balsamiqSans = Balsamiq_Sans({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-balsamiq-sans',
   weight: ['400', '700'],
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html suppressHydrationWarning lang='ru'>
+      <head />
       <body
         className={cn(
           'min-h-screen overflow-hidden bg-background font-balsamiq-sans antialiased',
