@@ -1,18 +1,31 @@
 'use client';
 
-import { SECTORS_DATA } from '@/shared/model/constants';
-import { baseApiURL } from '@/shared/model/env';
 import { Card, CardBody, CardHeader } from '@heroui/card';
 import { CheckCircle, XCircle } from 'lucide-react';
+import { useState } from 'react';
 
-export const revalidate = 60;
-export const dynamicParams = true;
+import { SECTORS_DATA } from '@/shared/model/constants';
+import { baseApiURL } from '@/shared/model/env';
 
-export default async function Sectors() {
-  const response = await fetch(baseApiURL);
-  const data = await response.json();
+export default function Sectors() {
+  const [sectors, setSectors] = useState<typeof SECTORS_DATA.sector>(SECTORS_DATA.sector);
 
-  const sectors = (data?.sector as typeof SECTORS_DATA.sector) || SECTORS_DATA.sector;
+  const getSectors = async () => {
+    try {
+      const response = await fetch(baseApiURL);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+
+      setSectors(data?.sector);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getSectors();
 
   return (
     <section className='flex flex-col gap-4'>
