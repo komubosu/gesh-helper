@@ -30,10 +30,10 @@ export default function PubsPage() {
       {data.pubs.map(pub => (
         <li key={pub.id}>
           <PubCard
-            name={pub.value.name}
-            recommend={pub.value.recommend}
-            workSchedule={pub.value.work_schedule}
-            rageReceipt={pub.value.rage_receipt}
+            name={pub.name}
+            recommend={pub.recommend}
+            workSchedule={pub.workSchedule}
+            rageReceipt={pub.rageReceipt}
           />
         </li>
       ))}

@@ -29,7 +29,7 @@ export default function SectorsPages() {
     <ShadowList>
       {data.sector.map(sector => (
         <li key={sector.id}>
-          <SectionCard name={sector.value.name_sector} lifts={sector.value.lifts} />
+          <SectionCard name={sector.name} lifts={sector.lifts} />
         </li>
       ))}
     </ShadowList>

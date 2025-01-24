@@ -28,15 +28,38 @@ interface ResponseData {
 
 interface ResponseDTO {
   temp: string;
-  sector: SectorData[];
-  pubs: PubData[];
+  sector: {
+    id: string;
+    name: string;
+    lifts: { name: string; isWork: boolean }[];
+  }[];
+  pubs: {
+    id: string;
+    name: string;
+    workSchedule: string;
+    recommend: string;
+    rageReceipt: string;
+  }[];
 }
 
 function mapToResponseDTO(data: ResponseData): ResponseDTO {
   return {
     temp: data.temp,
-    sector: data.sector,
-    pubs: data.pabs,
+    sector: data.sector.map(sector => ({
+      id: sector.id,
+      name: sector.value.name_sector,
+      lifts: sector.value.lifts.map(lift => ({
+        name: lift.name,
+        isWork: lift.is_work,
+      })),
+    })),
+    pubs: data.pabs.map(pub => ({
+      id: pub.id,
+      name: pub.value.name,
+      workSchedule: pub.value.work_schedule,
+      recommend: pub.value.recommend,
+      rageReceipt: pub.value.rage_receipt,
+    })),
   };
 }
 

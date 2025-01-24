@@ -1,17 +1,14 @@
 import { Card, CardBody } from '@heroui/card';
 import { Star } from 'lucide-react';
 
-export const PubCard = ({
-  name,
-  recommend,
-  workSchedule,
-  rageReceipt,
-}: {
+type PubCardProps = {
   name: string;
   recommend: string;
   workSchedule: string;
   rageReceipt: string;
-}) => {
+};
+
+export const PubCard = ({ name, recommend, workSchedule, rageReceipt }: PubCardProps) => {
   return (
     <Card radius='lg'>
       <CardBody className='space-y-2'>
