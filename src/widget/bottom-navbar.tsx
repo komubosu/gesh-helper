@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@heroui/button';
-import { BeerIcon, CableCarIcon } from 'lucide-react';
+import { AtSignIcon, BeerIcon, CableCarIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -10,6 +10,7 @@ import { siteConfig } from '@/shared/config/site';
 const mapIcons = {
   '/': <CableCarIcon className='flex-shrink-0' size={24} />,
   '/pubs': <BeerIcon className='flex-shrink-0' size={24} />,
+  '/about': <AtSignIcon className='flex-shrink-0' size={24} />,
 };
 
 export const BottomNavbar = () => {

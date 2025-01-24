@@ -6,6 +6,7 @@ export const siteConfig = {
   navItems: [
     { label: 'Подъемники', href: '/' },
     { label: 'Бары', href: '/pubs' },
+    { label: 'О нас', href: '/about' },
   ],
   links: {
     sponsor: 'а тут потом будет спонсор',

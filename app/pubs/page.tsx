@@ -1,21 +1,21 @@
 'use client';
 
-import { ScrollShadow } from '@heroui/scroll-shadow';
 import useSWR from 'swr';
 
 import { PubCard, PubSkeleton } from '@/entities/pubs';
 import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
 import { title } from '@/shared/ui/primitives';
+import { ShadowList } from '@/shared/ui/shadow-list';
 
 export default function PubsPage() {
   const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
 
   if (isLoading)
     return (
-      <ScrollShadow className='h-full px-4'>
+      <ShadowList>
         <PubSkeleton />
-      </ScrollShadow>
+      </ShadowList>
     );
 
   if (error || !data)
@@ -26,19 +26,17 @@ export default function PubsPage() {
     );
 
   return (
-    <ScrollShadow className='h-full px-4'>
-      <ul className='space-y-4'>
-        {data.pubs.map(pub => (
-          <li key={pub.id}>
-            <PubCard
-              name={pub.value.name}
-              recommend={pub.value.recommend}
-              workSchedule={pub.value.work_schedule}
-              rageReceipt={pub.value.rage_receipt}
-            />
-          </li>
-        ))}
-      </ul>
-    </ScrollShadow>
+    <ShadowList>
+      {data.pubs.map(pub => (
+        <li key={pub.id}>
+          <PubCard
+            name={pub.value.name}
+            recommend={pub.value.recommend}
+            workSchedule={pub.value.work_schedule}
+            rageReceipt={pub.value.rage_receipt}
+          />
+        </li>
+      ))}
+    </ShadowList>
   );
 }

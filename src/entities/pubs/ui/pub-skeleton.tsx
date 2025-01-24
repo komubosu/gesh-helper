@@ -3,7 +3,7 @@ import { Skeleton } from '@heroui/skeleton';
 
 export const PubSkeleton = () => {
   return (
-    <ul className='space-y-4'>
+    <>
       <li>
         <Card className='space-y-6 p-3' radius='lg'>
           <div className='flex items-center justify-between'>
@@ -64,6 +64,6 @@ export const PubSkeleton = () => {
           </div>
         </Card>
       </li>
-    </ul>
+    </>
   );
 };

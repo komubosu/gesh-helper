@@ -1,21 +1,21 @@
 'use client';
 
-import { ScrollShadow } from '@heroui/scroll-shadow';
 import useSWR from 'swr';
 
 import { SectionCard, SectionSkeleton } from '@/entities/sections';
 import { fetcher } from '@/shared/api/fetcher';
 import { baseApiURL } from '@/shared/model/env';
 import { title } from '@/shared/ui/primitives';
+import { ShadowList } from '@/shared/ui/shadow-list';
 
 export default function SectorsPages() {
   const { data, isLoading, error } = useSWR(baseApiURL, fetcher);
 
   if (isLoading)
     return (
-      <ScrollShadow className='h-full px-4'>
+      <ShadowList>
         <SectionSkeleton />
-      </ScrollShadow>
+      </ShadowList>
     );
 
   if (error || !data)
@@ -26,14 +26,12 @@ export default function SectorsPages() {
     );
 
   return (
-    <ScrollShadow className='h-full px-4'>
-      <ul className='space-y-4'>
-        {data.sector.map(sector => (
-          <li key={sector.id}>
-            <SectionCard name={sector.value.name_sector} lifts={sector.value.lifts} />
-          </li>
-        ))}
-      </ul>
-    </ScrollShadow>
+    <ShadowList>
+      {data.sector.map(sector => (
+        <li key={sector.id}>
+          <SectionCard name={sector.value.name_sector} lifts={sector.value.lifts} />
+        </li>
+      ))}
+    </ShadowList>
   );
 }

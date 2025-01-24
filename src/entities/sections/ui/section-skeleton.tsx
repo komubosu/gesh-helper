@@ -3,7 +3,7 @@ import { Skeleton } from '@heroui/skeleton';
 
 export const SectionSkeleton = () => {
   return (
-    <ul className='space-y-4'>
+    <>
       <li>
         <Card className='space-y-6 p-3' radius='lg'>
           <Skeleton className='rounded-lg'>
@@ -58,6 +58,6 @@ export const SectionSkeleton = () => {
           </div>
         </Card>
       </li>
-    </ul>
+    </>
   );
 };

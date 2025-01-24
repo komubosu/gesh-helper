@@ -22,9 +22,15 @@ export const PubCard = ({
             <Star size={20} className='fill-current text-yellow-400' />
           </div>
         </div>
-        <div className='flex items-center justify-between'>
-          <span className='text-gray-600 text-sm'>{workSchedule}</span>
-          <span className='font-medium text-sm'>Средний чек: {rageReceipt} ₽</span>
+        <div className='flex items-end justify-between'>
+          <div className='flex flex-col'>
+            {workSchedule.split(', ').map((time, index) => (
+              <span key={index} className='text-gray-600 text-sm'>
+                {time}
+              </span>
+            ))}
+          </div>
+          <span className='font-medium text-sm'>~{rageReceipt} ₽</span>
         </div>
       </CardBody>
     </Card>
